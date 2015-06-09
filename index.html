@@ -10,6 +10,14 @@
 <body>
   <form id="search">
     <h1>BeerMe</h1>
+    <select id="search-type" id="search-keyword">
+    <option value="Beer-Name">
+      Search by beer name!
+    </option>
+    <option value="Brewery">
+      Learn some more information about a brewery!
+    </option>
+    </select>
     <input type="search" id="search-term" value="Lagunitas Sucks">
     <input type="submit" value="Submit">
     <p id ="P-one">
@@ -19,6 +27,10 @@
       This website demonstrates a working knowledge of AJAX w/ Javascript & jQuery to grab
       information from the BreweryDB API!
     </p>
+    <p id= "P-3">
+      Not only that, it handles errors very well!
+    </p>
+
     <p id="search-rules">
       To begin simply enter the name of a beer in the search bar and hit submit!
     </p>
