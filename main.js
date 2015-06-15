@@ -13,8 +13,8 @@ function searchOpenBeerDB(event){
   event.preventDefault();
 
   var term = $("#search-term").val();
-  var url = 'http://api.brewerydb.com/v2/search?q='+term+'&type=beer&key=aae5c8039d40d4cad7ada705c75745d2';
-  var container = $("#results");
+  var searchType = $("#search-type").val();
+  var url = 'http://api.brewerydb.com/v2/search?q='+term+'&type='+searchType+'&key=aae5c8039d40d4cad7ada705c75745d2';
 
   var result =  $.ajax({
     url: url,
@@ -37,11 +37,12 @@ function searchOpenBeerDB(event){
 
     if (result== undefined ||
       result["data"] == undefined ||
-      result["data"][1] == undefined ||
-      result["data"][1]["description"]== undefined){
-        container.append("The openbeerDB does not have that beverage. Please try again!");
+      result["data"][0] == undefined ||
+      result["data"][0]["description"]== undefined){
+        $("#name").append("The brewerydb does not have that beverage. Please try again!");
       } else {
-        container.append(result["data"][1]["description"]);
+        $("#name").append(result["data"][0]["name"]);
+        $("#description").append(result["data"][0]["description"]);
       }
 
       // if (result!==undefined){
@@ -56,7 +57,7 @@ function searchOpenBeerDB(event){
 
 
     result.fail(function(){
-      container.append("$.get failed");
+      $("#name").append("$.get failed");
     });
 
 
@@ -64,7 +65,9 @@ function searchOpenBeerDB(event){
   }
 
   function clearDiv(){
-    $("#results").empty();
+    $("#name").empty();
+    $("#description").empty();
+    $("#label").empty();
   }
 
   // function resultsDisplay (result) {

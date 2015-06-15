@@ -15,6 +15,17 @@ h1 {
   font-size: 45px;
 }
 
-#P-one {
+#P-1 {
   color: red;
+}
+
+#name {
+  color: red;
+  padding-bottom: 2%;
+  font-weight: 900;
+  font-size: 25px;
+}
+
+#description {
+  padding-bottom: 2%;
 }
