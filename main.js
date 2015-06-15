@@ -39,7 +39,7 @@ function searchOpenBeerDB(event){
       result["data"] == undefined ||
       result["data"][0] == undefined ||
       result["data"][0]["description"]== undefined){
-        $("#name").append("The brewerydb does not have that beverage. Please try again!");
+        $("#name").append("The brewerydb does not have that beverage/brewery. Please try again!");
       } else {
         $("#name").append(result["data"][0]["name"]);
         $("#description").append(result["data"][0]["description"]);
