@@ -70,6 +70,10 @@ function searchOpenBeerDB(event){
     $("#label").empty();
   }
 
+  // setting upstream branch/finish writing function for display
+  // also thinking about how you're going to get the images to display
+  // think about using .innerHTML
+
   // function resultsDisplay (result) {
   //   var container = $("#results");
   //   container.append(results.name + " Description: " + results.description)
