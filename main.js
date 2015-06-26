@@ -1,6 +1,7 @@
 $(document).ready(function(){
   console.log("Lets go!");
 
+
   $('form#search input[type=submit]').on("mouseover", clearDiv);
   $('form#search input[type=submit]').on("click", searchOpenBeerDB);
   $('form#search input[type=submit]').on("click",clearDiv);
@@ -22,15 +23,6 @@ function searchOpenBeerDB(event){
     dataType: "json"
   });
 
-  // if (result===undefined){
-  //   container.append("The openbeerDB does not have that brewski. Please try again!");
-  // } else {
-  //   console.log("Searching openbeerDB");
-  // }
-
-  //  {
-  //   container.append(result["data"][1]["description"]);
-  // });
 
 
   result.done(function(result){
@@ -43,34 +35,19 @@ function searchOpenBeerDB(event){
       } else {
         $("#name").append(result["data"][0]["name"]);
         $("#description").append(result["data"][0]["description"]);
+        var picture = '<img src='+result["data"][0]["labels"]["large"]+'>'
+        $(picture).appendTo("#picture");
       }
-
-      // if (result!==undefined){
-      //   container.append(result["data"][1]["description"]);
-      // } else if(result==undefined || result["data"]==undefined)  {
-      //   container.append("The openbeerDB does not have that beverage. Please try again!");
-      // }
-      // else (console.log("What is going on?!"));
     });
-
-
-
 
     result.fail(function(){
       $("#name").append("$.get failed");
     });
-
-
-
   }
 
   function clearDiv(){
     $("#name").empty();
     $("#description").empty();
     $("#label").empty();
+    $("#picture").empty();
   }
-
-  // function resultsDisplay (result) {
-  //   var container = $("#results");
-  //   container.append(results.name + " Description: " + results.description)
-  // }
