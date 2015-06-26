@@ -34,7 +34,7 @@ function searchOpenBeerDB(event){
       result["data"][0] == undefined ||
       result["data"][0]["description"]== undefined){
         $("#name").append("The brewerydb does not have that beverage/brewery. Please try again!");
-      } else {  
+      } else {
           if(searchType=="beer"){
             var picture = '<img src='+result["data"][0]["labels"]["large"]+'>';
             }else{
