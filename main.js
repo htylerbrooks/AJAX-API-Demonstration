@@ -27,27 +27,34 @@ function searchOpenBeerDB(event){
 
   result.done(function(result){
 
+
+
     if (result== undefined ||
       result["data"] == undefined ||
       result["data"][0] == undefined ||
       result["data"][0]["description"]== undefined){
         $("#name").append("The brewerydb does not have that beverage/brewery. Please try again!");
-      } else {
-        $("#name").append(result["data"][0]["name"]);
-        $("#description").append(result["data"][0]["description"]);
-        var picture = '<img src='+result["data"][0]["labels"]["large"]+'>'
-        $(picture).appendTo("#picture");
-      }
-    });
+      } else {  
+          if(searchType=="beer"){
+            var picture = '<img src='+result["data"][0]["labels"]["large"]+'>';
+            }else{
+            var picture = '<img src='+result["data"][0]["images"]["large"]+'>';
+      };
 
-    result.fail(function(){
-      $("#name").append("$.get failed");
-    });
-  }
+      $("#name").append(result["data"][0]["name"]);
+      $("#description").append(result["data"][0]["description"]);
+      $(picture).appendTo("#picture");
+    }
+  });
 
-  function clearDiv(){
-    $("#name").empty();
-    $("#description").empty();
-    $("#label").empty();
-    $("#picture").empty();
-  }
+  result.fail(function(){
+    $("#name").append("$.get failed");
+  });
+}
+
+function clearDiv(){
+  $("#name").empty();
+  $("#description").empty();
+  $("#label").empty();
+  $("#picture").empty();
+}
